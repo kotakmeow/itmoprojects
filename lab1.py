@@ -18,7 +18,7 @@ def clear():
     if os.name == 'nt':
         os.system('cls')    ## Windows
     else:
-        os.system('clear')  # #Linux / macOS
+        os.system('clear')  ##Linux / macOS
 
 # -------- флаг --------
 def flag():
