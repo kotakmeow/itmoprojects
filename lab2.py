@@ -47,7 +47,7 @@ def process_csv(filename='books.csv'):
         COL_POP = 8          # популярность
         min_year = 2018      
 
-    # кодировка (windows-1251 или utf-8)
+    # кодировка (windows-1251/utf-8)
     encoding_to_use = 'utf-8'
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -77,7 +77,7 @@ def process_csv(filename='books.csv'):
             title = clean_str(row[COL_TITLE])
             author_main = clean_str(row[COL_AUTHOR])
             author_alt = clean_str(row[COL_AUTHOR_ALT])
-            # если поле 'Автор' пустое,то 'Автор (ФИО)'
+            # если поле 'автор' пустое,то 'автор (фио)'
             display_author = author_main if author_main else author_alt
             year = extract_year(row[COL_YEAR])
 
@@ -94,7 +94,7 @@ def process_csv(filename='books.csv'):
                     else:
                         older_books_count += 1
 
-            # генератор библиографических ссылок
+            # генератор ссылок
             all_records.append(f"{display_author}. {title} - {year if year else 'б/г'}")
 
             # допзадание 1
@@ -119,7 +119,7 @@ def process_csv(filename='books.csv'):
     print(f"\n1. Количество записей с названием длиннее 30 символов: {long_titles_count}")
 
 
-    print(f"\n2. Результаты поиска по автору «{search_author}» (от {min_year} года):")
+    print(f"\n2. Результаты поиска по автору {search_author} (от {min_year} года):")
     if found_books:
         print(f"   Найдено подходящих книг: {len(found_books)}")
         for b in found_books[:20]:
